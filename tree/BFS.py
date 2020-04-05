@@ -103,4 +103,4 @@ def print_tree(tree):
     return string
 
 
-print(print_tree(fruit_tree))
+# print(print_tree(fruit_tree))
