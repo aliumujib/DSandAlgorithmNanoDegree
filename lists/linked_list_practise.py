@@ -89,7 +89,7 @@ class LinkedList:
                     node.next = Node(value)
                     return
                 node = node.next
-            counter = counter+1
+            counter = counter + 1
 
     def size(self):
         """ Return the size or length of the linked list. """

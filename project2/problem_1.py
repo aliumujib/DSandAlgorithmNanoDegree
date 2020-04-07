@@ -18,7 +18,7 @@ class LRU_Cache(object):
         return len(self.recency_tracker) >= self.max_size
 
     def set(self, key, value):
-        if(self.is_full()):
+        if self.is_full():
             least_recently_used_key = self.recency_tracker.popleft()
             del self.cache[least_recently_used_key]
 
@@ -35,10 +35,9 @@ our_cache.set(2, 2)
 our_cache.set(3, 3)
 our_cache.set(4, 4)
 
-
-our_cache.get(1)       # returns 1
-our_cache.get(2)       # returns 2
-res = our_cache.get(9)      # returns -1 because 9 is not present in the cache
+our_cache.get(1)  # returns 1
+our_cache.get(2)  # returns 2
+res = our_cache.get(9)  # returns -1 because 9 is not present in the cache
 print(res)
 
 our_cache.set(5, 5)

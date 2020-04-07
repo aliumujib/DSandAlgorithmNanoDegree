@@ -201,3 +201,12 @@ huffmanCoding = HuffmanCoding()
 huffman_tree, key_code_map, encoded_string = huffmanCoding.huffman_encoding(
     "only to get a representation of a dictionary that is sorted. Dictionaries are inherently orderless")
 print("DECODED VALUE {} FROM {}".format(huffmanCoding.huffman_decoding(encoded_string, huffman_tree), encoded_string))
+
+
+huffmanCoding2 = HuffmanCoding()
+huffman_tree2, key_code_map2, encoded_string2 = huffmanCoding2.huffman_encoding(
+    "- First I used a HashMap to collate the frequency of each character")
+print("DECODED VALUE {} FROM {}".format(huffmanCoding.huffman_decoding(encoded_string2, huffman_tree2), encoded_string2))
+
+
+
