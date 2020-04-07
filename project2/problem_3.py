@@ -144,7 +144,6 @@ class HuffmanCoding:
             self.__make_map_of_key_codes__("{}{}".format(current_string, "1"), result_map, node.right)
 
     def __encode_data_using_map__(self, data, result, map):
-        print(data)
         if len(data) == 0:
             return result
         else:
@@ -153,19 +152,37 @@ class HuffmanCoding:
 
     def huffman_encoding(self, data):
         character_frequencies = self.__count_character_frequencies__(data)
-        #print("type {}".format(type(character_frequencies)))
-        huffman_tree = self.__build_tree__(character_frequencies)
-        huffman_tree.get_root_node().display()
-        key_code_map = {}
-        self.__make_map_of_key_codes__("", key_code_map, huffman_tree.get_root_node())
-        print(key_code_map)
-        encoded_string = self.__encode_data_using_map__(data, "", key_code_map)
-        return encoded_string, key_code_map, huffman_tree
+        # print("type {}".format(type(character_frequencies)))
+        huffman_tree_ = self.__build_tree__(character_frequencies)
+        huffman_tree_.get_root_node().display()
+        key_code_map_ = {}
+        self.__make_map_of_key_codes__("", key_code_map_, huffman_tree_.get_root_node())
+        print(key_code_map_)
+        encoded_string_ = self.__encode_data_using_map__(data, "", key_code_map_)
+        # print("{}".format(encoded_string_))
+        return huffman_tree_, key_code_map_, encoded_string_
 
     def huffman_decoding(self, data, tree):
-        pass
+        return self.__decode_data_using_tree__("", data, tree, tree.get_root_node())
 
-    def __count_character_frequencies__(self, string):
+    def __decode_data_using_tree__(self, result, data, tree, node):
+        if len(data) > 0:
+            if node.left and node.right:
+                if data[0] == '0':
+                    return self.__decode_data_using_tree__(result, data[1:], tree, node.left)
+                elif data[0] == '1':
+                    return self.__decode_data_using_tree__(result, data[1:], tree, node.right)
+            else:
+                result = "{}{}".format(result, node.value[0])
+                node = tree.get_root_node()
+                return self.__decode_data_using_tree__(result, data[0:], tree, node)
+        else:
+            result = "{}{}".format(result, node.value[0])
+            print("RETURNING {}".format(result))
+            return result
+
+    @staticmethod
+    def __count_character_frequencies__(string):
         map_of_frequencies = {}
 
         for character in string:
@@ -181,5 +198,6 @@ class HuffmanCoding:
 
 
 huffmanCoding = HuffmanCoding()
-print("RES MAP: {}".format(huffmanCoding.huffman_encoding(
-    "only to get a representation of a dictionary that is sorted. Dictionaries are inherently orderless")))
+huffman_tree, key_code_map, encoded_string = huffmanCoding.huffman_encoding(
+    "only to get a representation of a dictionary that is sorted. Dictionaries are inherently orderless")
+print("DECODED VALUE {} FROM {}".format(huffmanCoding.huffman_decoding(encoded_string, huffman_tree), encoded_string))
