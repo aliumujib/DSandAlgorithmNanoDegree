@@ -5,11 +5,11 @@ to store the keys as they are being inserted and remove from the head of the que
 Using a hashmap seemed like the logical thing to do for a Key-Value pair kind of data store so I went with it, also for the obvious constant insertion and retrieval advantages.
 
 ###Time complexity
-- The time complexity for insertion into the cache is o(1) as all the operations involved run in constant time.
+- The time complexity for insertion into the cache is o(1) as all the operations involved run in constant time since I used a dictionary.
 - The time complexity for retrieval from the cache is also o(1) as all the operations involved run in constant time.
 
 ###Space complexity
-- The space complexity for insertion into the cache is constant because the cachesize never doubles but instead discards 
+- The worse case space complexity for insertion into the cache is constant because the cachesize never doubles but instead discards 
 unused elements.
 
 ---

@@ -11,7 +11,7 @@ class Block:
         self.hash = self.calc_hash()
 
     def __repr__(self):
-        return "[{} {} {} {}]".format(self.data, self.timestamp, self.previous_hash, self.hash)
+        return "[data: {}\n timestamp: {}\n previoushash: {}\n hash:{}]".format(self.data, self.timestamp, self.previous_hash, self.hash)
 
     def calc_hash(self):
         sha = hashlib.sha256()
@@ -26,66 +26,57 @@ class Block:
 class BlockChain:
 
     def __init__(self):
-        self.head = None
-        self.size = 0
+        self.list = []
+        self.current_index = -1
+
+    def get_head_of_chain(self):
+        if len(self.list) == 0:
+            return None
+        else:
+            return self.list[0]
 
     def __str__(self):
-        cur_head = self.head
         out_string = ""
-        while cur_head:
-            out_string += str(cur_head.value) + " -> "
-            cur_head = cur_head.next
+        for item in self.list:
+            out_string += str(item.data) + " -> "
+
         return out_string
 
     def prepend(self, value):
-        if self.head is None:  # perfect
-            self.head = Block(datetime.now(), value, 0)
-        else:
+        if self.get_head_of_chain() is None:  # perfect, LOL
             node = Block(datetime.now(), value, 0)
-            self.head.previous_hash = node.hash
-            node.next = self.head
-            self.head = node
+            self.list.insert(0, node)
+        else:
+            last_head = self.get_head_of_chain()
+            block = Block(datetime.now(), value, 0)
+            last_head.previous_hash = block.hash
+            self.list.insert(0, block)
+        print("prepended node with hash {}".format(self.get_head_of_chain().hash))
 
     def append(self, value):
-        if self.head is None:
-            self.head = Block(datetime.now(), value, 0)
+        if self.get_head_of_chain() is None:
+            self.list.insert(0, Block(datetime.now(), value, 0))
+            print("appended node with hash {}".format(self.get_head_of_chain().hash))
         else:
-            traverser = self.head
-            while traverser.next:
-                traverser = traverser.next
-            traverser.next = Block(datetime.now(), value, traverser.hash)
+            last_block = self.list[-1]
+            block = Block(datetime.now(), value, last_block.hash)
+            self.list.append(block)
+            print("appended node with hash {}".format(block.hash))
 
-    def search(self, value):
+    def search(self, hash):
         """ Search the BlockChain for a block with the requested value and return the node. """
 
-        if self.head is None:
+        if self.get_head_of_chain() is None:
             return None
         else:
-            traverser = self.head
-            while traverser.next:
-                if traverser.value == value:
-                    return traverser
-                else:
-                    traverser = traverser.next
+            for item in self.list:
+                if hash == item.hash:
+                    return item
         return None
 
     def delete(self, value):
-        """ Search the BlockChain for a block with the requested value and return the node. """
-
-        if self.head is None:
-            return None
-        else:
-            traverser = self.head
-            previous = None
-            while traverser.next:
-                if traverser.value == value:
-                    next_val = traverser.next
-                    previous.next = next_val
-                    next_val.previous_hash = previous.hash
-                    return traverser
-                else:
-                    previous = traverser
-                    traverser = traverser.next
+        """Block chain nodes cannot be deleted """
+        print("Block chain nodes cannot be deleted")
         return None
 
 
@@ -99,6 +90,12 @@ for ele in element_1:
     block_chain_1.append(ele)
 
 print(block_chain_1)
+
+
+print("FOUND RESULT: {}".format(block_chain_1.search("3c8e698f72c8b056ed99d8088cc08b376aa6f0f09fbdab2a4366009f90b2a74d")))
+
+print("FOUND RESULT: {}".format(block_chain_1.search("3c8e698f72c8b056ed99d8088cc08b376aa6f0f09fbdab2a4366009f90b24d")))
+
 
 element_2 = ["For something simple to start with", "that raises x to a natural power of",
              "There are two ways to implement it.", "Recursive thinking: simplify the task"]
