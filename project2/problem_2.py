@@ -40,3 +40,6 @@ for dir in find_files(".c", "/Users/aliumujib/Desktop/RoadToAI/learningpython/DS
 
 for dir in find_files(".c", "/Users/aliumujib/Desktop/RoadToAI/learningpython/DSandAlgos/project2/testdirectory"):
     print(dir)
+
+for dir in find_files(".c", ""):
+    print(dir)

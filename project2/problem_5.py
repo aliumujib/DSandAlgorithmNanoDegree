@@ -5,13 +5,16 @@ from datetime import datetime
 class Block:
 
     def __init__(self, timestamp, data, previous_hash):
+        assert data is not None
+
         self.timestamp = timestamp
-        self.data = data
+        self.data = str(data)
         self.previous_hash = previous_hash
         self.hash = self.calc_hash()
 
     def __repr__(self):
-        return "[data: {}\n timestamp: {}\n previoushash: {}\n hash:{}]".format(self.data, self.timestamp, self.previous_hash, self.hash)
+        return "[data: {}\n timestamp: {}\n previoushash: {}\n hash:{}]".format(self.data, self.timestamp,
+                                                                                self.previous_hash, self.hash)
 
     def calc_hash(self):
         sha = hashlib.sha256()
@@ -82,6 +85,7 @@ class BlockChain:
 
 block_chain_1 = BlockChain()
 block_chain_2 = BlockChain()
+block_chain_3 = BlockChain()
 
 element_1 = ["If you are not new to programming", "Recursion is a programming pattern",
              "at is useful in situations when a task can be naturally split", "That’s called recursion"]
@@ -91,11 +95,10 @@ for ele in element_1:
 
 print(block_chain_1)
 
-
-print("FOUND RESULT: {}".format(block_chain_1.search("3c8e698f72c8b056ed99d8088cc08b376aa6f0f09fbdab2a4366009f90b2a74d")))
+print(
+    "FOUND RESULT: {}".format(block_chain_1.search("3c8e698f72c8b056ed99d8088cc08b376aa6f0f09fbdab2a4366009f90b2a74d")))
 
 print("FOUND RESULT: {}".format(block_chain_1.search("3c8e698f72c8b056ed99d8088cc08b376aa6f0f09fbdab2a4366009f90b24d")))
-
 
 element_2 = ["For something simple to start with", "that raises x to a natural power of",
              "There are two ways to implement it.", "Recursive thinking: simplify the task"]
@@ -104,3 +107,11 @@ for ele in element_2:
     block_chain_2.append(ele)
 
 print(block_chain_2)
+
+element_3 = [None, 0,
+             None, -120002]
+
+for ele in element_3:
+    block_chain_3.append(ele)
+
+print(element_3)

@@ -35,8 +35,12 @@ our_cache.set(2, 2)
 our_cache.set(3, 3)
 our_cache.set(4, 4)
 
-our_cache.get(1)  # returns 1
-our_cache.get(2)  # returns 2
+print(our_cache.get(1) ) # returns 1
+print(our_cache.get(2))  # returns 2
+
+res = our_cache.get(None)  # returns -1 because None is not present in the cache
+print(res)
+
 res = our_cache.get(9)  # returns -1 because 9 is not present in the cache
 print(res)
 

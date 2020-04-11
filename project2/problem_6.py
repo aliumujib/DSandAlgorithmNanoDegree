@@ -105,3 +105,22 @@ for i in element_2:
 
 print("UNION: {}".format(union(linked_list_3, linked_list_4)))
 print("INTERSECTION: {}".format(intersection(linked_list_3, linked_list_4)))
+
+
+
+# Test case 3
+
+linked_list_5 = LinkedList()
+linked_list_6 = LinkedList()
+
+element_1 = [None, 2, 4, 35, 6, 65, 6, 4, 3, 23]
+element_2 = [1, "7", 8, 9, "11", 21, 1]
+
+for i in element_1:
+    linked_list_5.append(i)
+
+for i in element_2:
+    linked_list_6.append(i)
+
+print("UNION: {}".format(union(linked_list_5, linked_list_6)))
+print("INTERSECTION: {}".format(intersection(linked_list_5, linked_list_6)))

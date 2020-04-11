@@ -151,6 +151,8 @@ class HuffmanCoding:
             return self.__encode_data_using_map__(data[1:], result, map)
 
     def huffman_encoding(self, data):
+        if not data:
+            return None, None, None
         character_frequencies = self.__count_character_frequencies__(data)
         # print("type {}".format(type(character_frequencies)))
         huffman_tree_ = self.__build_tree__(character_frequencies)
@@ -163,6 +165,8 @@ class HuffmanCoding:
         return huffman_tree_, key_code_map_, encoded_string_
 
     def huffman_decoding(self, data, tree):
+        if data is None or tree is None:
+            return None
         return self.__decode_data_using_tree__("", data, tree, tree.get_root_node())
 
     def __decode_data_using_tree__(self, result, data, tree, node):
@@ -202,11 +206,20 @@ huffman_tree, key_code_map, encoded_string = huffmanCoding.huffman_encoding(
     "only to get a representation of a dictionary that is sorted. Dictionaries are inherently orderless")
 print("DECODED VALUE {} FROM {}".format(huffmanCoding.huffman_decoding(encoded_string, huffman_tree), encoded_string))
 
-
 huffmanCoding2 = HuffmanCoding()
 huffman_tree2, key_code_map2, encoded_string2 = huffmanCoding2.huffman_encoding(
     "- First I used a HashMap to collate the frequency of each character")
-print("DECODED VALUE {} FROM {}".format(huffmanCoding.huffman_decoding(encoded_string2, huffman_tree2), encoded_string2))
+print(
+    "DECODED VALUE {} FROM {}".format(huffmanCoding.huffman_decoding(encoded_string2, huffman_tree2), encoded_string2))
 
+huffmanCoding3 = HuffmanCoding()
+huffman_tree3, key_code_map3, encoded_string3 = huffmanCoding2.huffman_encoding(
+    "10000111111")
+print(
+    "DECODED VALUE {} FROM {}".format(huffmanCoding.huffman_decoding(encoded_string3, huffman_tree3), encoded_string3))
 
-
+huffmanCoding4 = HuffmanCoding()
+huffman_tree4, key_code_map4, encoded_string4 = huffmanCoding2.huffman_encoding(
+    None)
+print(
+    "DECODED VALUE {} FROM {}".format(huffmanCoding.huffman_decoding(encoded_string4, huffman_tree4), encoded_string4))

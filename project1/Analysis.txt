@@ -1,0 +1,21 @@
+TASK 0: O(1):
+Two loops run through both of the files containing sample data both of which have a time complexity of O(n). The solution basically goes to the first and last index of the arrays and prints the values it finds all of which happens in constant time brings the time complexity to O(n) + O(n) + O(1) = O(n)
+
+TASK 1: O(n) + O(n) + O(n + O(n) = O(n)
+There are a total of 4 loops in the program. Two read from the files and the other two add phone numbers to a list. I used a set here because it helped me eradicate having to go through the entire list to check if an element exists by using the `in` keyword. 
+
+
+TASK 2: O(n) + O(n) + O(n)
+Having learnt about dictionaries in module 2, I was able to reduce time complexity significantly here.
+The loops for initialising data all added up to a time complexity of O(n). The loop that accumulates the time for each item also does so with a worst case of O(n). Going through the dictionary to find the maximum element also does that in O(n) since the key executes in constant time.
+
+
+TASK 3A: O(n) +  O(n log(n)) = O(n) + O(n log(n)):
+I was able to reduce the time complexity here by using a set to enforce uniqueness, the time complexity for finding the codes is O(n) but sorting the list adds another O(n log (n)).
+
+TASK 3B: O(n)
+Finding the number fixed phones from Bangalore has a time complexity of O(n) because it is just one loop. The percentage calculation happens in constant time.
+
+TASK 4: O(n) + O(n)+ O(n)+ O(n)+ O(n ^ 2) = 4*O(n) + O(n ^ 2) = O(n^2):
+There are 5 loops in the program if we take the loops that read from files into account,
+All of which will add up to a time complexity of O(n). However the last loop uses the python `in` operator which then brings the time complexity of the last list to O(n^2). That dominated the run time. 
