@@ -10,10 +10,11 @@ it seemed like it'd be easier to write and I really wanted to practise writing r
 
 
 ###Time complexity
-- The time complexity for finding a file is o(n) in the worst case where n is the number of subdirectories the path has.
+- the time complexity would be O(n^2) in the worst case where n is the depth of the group hierarchy. I arrived at this idea by thinking of the folder structure
+as a non binary tree and the traversal algorithm as a BFS traversal of the tree which as complexity of O(n) + O(n-1) + O(n-2) + .. + O(1) which is O(n^2)..
 
 ###Space complexity
-- The space complexity is also linear O(m) where m is the depth of the file hierachy as more space would be need to store the methods call frames depending on how deeply nested
+- The space complexity is also linear O(m) where m is the depth of the file hierarchy as more space would be need to store the methods call frames depending on how deeply nested
 the file system being traversed is.
 
 ---

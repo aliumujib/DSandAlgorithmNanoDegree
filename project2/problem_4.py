@@ -42,12 +42,22 @@ def is_user_in_group(user, group):
       user(str): user name/id
       group(class:Group): group to check user membership against
     """
+    if user == group.get_name():
+        return True
+
     if group:
         if user in group.users:
             return True
         else:
             if len(group.get_groups()) > 0:
-                return is_user_in_group(user, group.get_groups().pop())
+                # return is_user_in_group(user, group.get_groups().pop()) I left this commented because I think it is
+                # the same as having a loop, especially since the last item gets removed at each iteration,
+                # I am not attached to the idea, but I am really trying to practise using recursion where I can and
+                # this seemed like a good opportunity to do so. So I'd appreciate a quick explanation by my next
+                # reviewer. :-)
+
+                for grp in group.get_groups():
+                    return is_user_in_group(user, grp)
             else:
                 return False
     else:
