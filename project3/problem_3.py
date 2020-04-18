@@ -66,5 +66,10 @@ def test_function(test_case):
 
 
 test_function([[1, 2, 3, 4, 5], [542, 31]])
+
 test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
 test_function(test_case)
+
+test_case_2 = [[6, 7, 2, 5, 9, 8], [975, 862]]
+test_function(test_case_2)
+

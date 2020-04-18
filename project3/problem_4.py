@@ -5,7 +5,6 @@ def sort_012(input_list):
     Args:
        input_list(list): List to be sorted
     """
-    print(len(input_list))
 
     result = __sort_012__(input_list, 0, 0, len(input_list) - 1)
     return result
@@ -18,7 +17,7 @@ def swap(array, first_index, second_index):
 
 
 def __sort_012__(input_list, low, mid, high):
-    if mid >= high:
+    if mid > high:
         return input_list
     else:
         element = input_list[mid]
@@ -32,13 +31,12 @@ def __sort_012__(input_list, low, mid, high):
             swap(input_list, mid, high)
             high = high - 1
 
-        print("{} {} {} {}".format(mid, low, high, input_list))
         return __sort_012__(input_list, low, mid, high)
 
 
 def test_function(test_case):
     sorted_array = sort_012(test_case)
-    print("{} {}".format(sorted_array, sorted(test_case)))
+    assert len(sorted_array) == len(test_case)
     if sorted_array == sorted(test_case):
         print("Pass")
     else:

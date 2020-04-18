@@ -41,6 +41,7 @@ def conquer(left, right):
     return merged
 
 
+
 def test_function(test_case):
     arr = test_case[0]
     solution = test_case[1]
@@ -65,3 +66,6 @@ arr = [1, 2, 4, 2, 3, 11, 22, 99, 108, 389]
 solution = 2
 test_case = [arr, solution]
 test_function(test_case)
+
+
+print("MS {}".format(merge_sort([4,3,1,2])))
