@@ -1,3 +1,6 @@
+from tree.BFS import Queue
+
+
 class GraphNode(object):
     def __init__(self, val):
         self.value = val
@@ -103,8 +106,52 @@ def dfs_search_iterative(root_node, target):
     return None
 
 
-print("Iterative {}".format(dfs_walk_iterative(nodeG)))
-print("Search iterative {}".format(dfs_search_iterative(nodeG, "A")))
+def bfs_search(root_node, search_value):
+    return recursive_bfs_search(root_node, [], [root_node], search_value)
 
-print("Recursive {}".format(dfs_walk_recursive([nodeG], [])))
-print("Search recursive {}".format(dfs_search_recursive(nodeG, [], "A")))
+
+def recursive_bfs_search(node, visited, queue, target):
+    if node.value == target:
+        return node
+    else:
+        while len(queue) > 0:
+            current_node = queue.pop(0)
+            for child in current_node.children:
+                if current_node not in visited:
+                    visited.append(current_node)
+                    queue.append(child)
+                print("{} {}".format(visited, queue))
+        return recursive_bfs_search(queue.pop(), visited, queue, target)
+
+
+def iterative_bfs_search(root_node, search_value):
+    queue = []
+    visited = []
+
+    queue.append(root_node)
+    visited.append(root_node)
+
+    while queue:
+        node = queue.pop(0)
+
+        if node.value == search_value:
+            return node
+
+        for child in node.children:
+            if child not in visited:
+                queue.append(child)
+                visited.append(child)
+
+
+print("Iterative DFS Walk {}".format(dfs_walk_iterative(nodeG)))
+print("DFS Search iterative {}\n".format(dfs_search_iterative(nodeS, "A")))
+
+print("Recursive DFS Walk {}".format(dfs_walk_recursive([nodeS], [])))
+print("DFS Search recursive {}\n".format(dfs_search_recursive(nodeS, [], "A")))
+
+print("BFS Search recursive {}".format(bfs_search(nodeS, 'A')))
+print("BFS Search iterative {}".format(iterative_bfs_search(nodeG, 'A')))
+
+# assert nodeA == bfs_search(nodeS, 'A')
+# assert nodeS == bfs_search(nodeP, 'S')
+# assert nodeR == bfs_search(nodeH, 'R')

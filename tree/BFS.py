@@ -1,9 +1,7 @@
-from binary_trees import Tree
-from binary_trees import Node
-from stack import Stack
-from stack import State
-
 from collections import deque
+
+from tree.binary_trees import Node, Tree
+from tree.stack import Stack
 
 
 class Queue():
@@ -94,13 +92,12 @@ def print_tree(tree):
 
         node, current_lvl = visit_order[i]
 
-        if(last_printed_level < current_lvl):
+        if (last_printed_level < current_lvl):
             string = string + "{}|{}\n".format(node.get_left_child(), node.get_right_child())
         else:
             string = string + "{} | {}\t".format(node.get_left_child(), node.get_right_child())
 
         # print(string)
     return string
-
 
 # print(print_tree(fruit_tree))
