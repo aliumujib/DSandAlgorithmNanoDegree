@@ -20,7 +20,7 @@ def knap_sack(weights, values, capacity):
     if weights is None or values is None or capacity < 0:
         print("Ode ni yin sir")
         return
-
+    selected_items = []
     loop_up_table = init_array(len(weights), capacity)
 
     for index in range(1, len(weights) + 1):
@@ -36,13 +36,12 @@ def knap_sack(weights, values, capacity):
                 loop_up_table[index][knap_sack_size] = loop_up_table[index - 1][
                                                            knap_sack_size - current_weight] + current_value
 
-    return loop_up_table, loop_up_table[-1][-1]
+    return loop_up_table, loop_up_table[-1][-1], selected_items
 
-
-#def find_optimal_items(look_up_table):
 
 data = knap_sack([3, 1, 3, 4, 2], [2, 2, 4, 5, 3], 7)
 for row in data[0]:
     print(row)
 
 print(data[1])
+print(data[2])

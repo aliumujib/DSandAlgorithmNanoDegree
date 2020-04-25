@@ -1,5 +1,4 @@
 import math
-import heapq
 
 
 class GraphEdge(object):
@@ -22,6 +21,9 @@ class GraphNode(object):
     def remove_child(self, del_node):
         if del_node in self.edges:
             self.edges.remove(del_node)
+
+    def __repr__(self):
+        return "{}".format(self.value)
 
 
 class Graph(object):
@@ -69,27 +71,23 @@ graph.add_edge(node_y, node_t, 5)
 
 
 # need to build a table. node_name, shortest_dist_from_start_node, previous_node
-
-def get_value_from_edge(node_edge_dict, edge):
-    if edge.node.value in node_edge_dict:
-        return node_edge_dict[edge.node.value]
-    else:
-        return 0
-
-
-node_edge_dict = {}
-print(node_a.edges)
-
-for edge in node_a.edges:
-    print("for {} adding {} to original distance of {}".format(edge.node.value, edge.distance,
-                                                               get_value_from_edge(node_edge_dict, edge)))
-    node_edge_dict[edge.node.value] = get_value_from_edge(node_edge_dict, edge) + edge.distance
-
-print(node_edge_dict)
-
-
 def dijkstra(start_node, end_node):
-    pass
+    distance_dict = {node: math.inf for node in graph.nodes}
+    shortest_path_to_node = {}
+
+    distance_dict[start_node] = 0
+    while distance_dict:
+        # Pop the shorest path
+        current_node, node_distance = sorted(distance_dict.items(), key=lambda x: x[1])[0]
+        shortest_path_to_node[current_node] = distance_dict.pop(current_node)
+
+        for edge in current_node.edges:
+            if edge.node in distance_dict:
+                new_node_distance = node_distance + edge.distance
+                if distance_dict[edge.node] > new_node_distance:
+                    distance_dict[edge.node] = new_node_distance
+
+    return shortest_path_to_node, shortest_path_to_node[end_node]
 
 
-print('Shortest Distance from {} to {} is {}'.format(node_u.value, node_y.value, dijkstra(node_u, node_y)))
+print('Shortest Distance from {} to {} is {}'.format(node_u.value, node_y.value, dijkstra(node_u, node_y)[1]))
