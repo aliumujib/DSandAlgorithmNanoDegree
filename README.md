@@ -4,10 +4,12 @@ I am currently trying to complete Udacity's Data Structures and Algorithms Nanod
  If I do not have a certificate / the final routeplanner project uploaded here by Apr 26, 2020.
 Then I have failed and I deserve the burn of paying $399 out of pocket 😬.
 
-###Update 
+###Update
+ 
 I went through all the lessons and passed all the projects just in time, 30 days.
 
 ###How?
+
 I leveraged Youtube and Medium a lot, some of Udacity's content was not so good in some cases so I made sure that I 
 didn't get stuck wondering about anything on Udacity. The moment something seemed too confusing, I hit Youtube
 immediately.
@@ -38,6 +40,7 @@ yet but so far, its been gem!
 - A*: Pray to God and take a second look at this playlist: <<https://www.youtube.com/watch?v=pVfj6mxhdMw&list=PLTd6ceoshprfgFGcdiQw9LQ3fXaYC-Zs2>
 
 ###What next?
+
 I am thinking of spending some of the money I saved on Udacity at <https://algoexpert.io>, then I should probably finish some extra content 
 I discovered on youtube and hit the streets of Leetcode to deepen and test my understanding of what I learnt. But thats another story.
 
