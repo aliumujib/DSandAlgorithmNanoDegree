@@ -42,7 +42,7 @@ yet but so far, its been gem!
 ### What next?
 
 I am thinking of spending some of the money I saved on Udacity at <https://algoexpert.io>, then I should probably finish some extra content 
-I discovered on youtube and hit the streets of Leetcode to deepen and test my understanding of what I learnt. But thats another story.
+I discovered on youtube and hit the streets of Leetcode to deepen and test my understanding of what I learnt. But that's another story.
 
 
 
